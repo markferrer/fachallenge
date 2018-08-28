@@ -1,4 +1,5 @@
 from django.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 class MovieReview(models.Model):
@@ -6,14 +7,14 @@ class MovieReview(models.Model):
     mpaa_rating = models.CharField(max_length=5)
     critics_pick = models.IntegerField()
     headline = models.CharField(max_length=255)
-    summary_report = models.TextField()
-    publication_date = models.DateTimeField()
-    opening_date = models.DateTimeField()
-    date_updated = models.DateTimeField()
+    summary_short = models.TextField()
 
     # Log when this record was created and last modified in our DB.
     date_created_local = models.DateTimeField(auto_now_add=True)
     date_modified_local = models.DateTimeField(auto_now=True)
+
+    email = models.EmailField(null=True, blank=True)
+    phone = PhoneNumberField(null=True, blank=True)
 
 
 class Link(models.Model):

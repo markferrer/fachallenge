@@ -1,4 +1,34 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<table>
+    <tr>
+        <th>Title</th>
+        <th>MPAA Rating</th>
+        <th>Headline</th>
+    </tr>
+    {% for review in object_list %}
+    <tr>
+        <td>{{ review.title }}</td>
+        <td>{{ review.mpaa_rating }}</td>
+        <td>{{ review.headline }}</td>
+        <td>
+            {% if not review.email %}
+                <a href="">Add Email</a>
+            {% else %}
+                {{ review.email }}
+            {% endif %}
+        </td>
+        <td>
+            {% if not review.phone %}
+                <a href="">Add Phone</a>
+            {% else %}
+                {{ review.phone }}
+            {% endif %}
+        </td>
+        <div>
+        </div>
+    </tr>
+    {% endfor %}
+</table>
 {% endblock %}
